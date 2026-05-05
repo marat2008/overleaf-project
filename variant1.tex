@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage[12pt]{extsizes}
+\usepackage{fancyvrb}
+\usepackage{indentfirst}
+\usepackage[
+  left=2cm, right=2cm, top=2cm, bottom=2cm, headsep=0.2cm, footskip=0.6cm, bindingoffset=0cm
+]{geometry}
+\usepackage[english,russian]{babel}
+
+\begin{document}
+
+\section*{Вариант 1}
+
+В левой полости давление постоянно $p_0$, а в правой полости оно имеет постоянную составляющую и гармонически изменяющуюся по времени составляющую $p_0 + p_1^+$. Закон изменения давления на правом торце представим в виде
+\[
+p_1^+ = p_{1m}^+ f_p(\omega t), \quad f_p(\omega t) = \exp(i\omega t),
+\]
+где $p_{1m}^+$ --- амплитуда пульсаций давления на торце канала; $\omega$ --- частота пульсаций; $f_p(\omega t)$ --- закон изменения давления.
+
+Введем в рассмотрение безразмерные переменные
+\[
+\begin{aligned}
+\psi &= \delta_0 / \ell \ll 1, \quad \lambda = w_m / \delta_0 \ll 1, \quad \Re = \delta_0^2 \omega / \nu, \quad \tau = \omega t, \quad \xi = x / \ell, \quad \zeta = z / \delta_0, \\
+V_z &= w_m \omega U_\zeta, \quad w = w_m W, \quad u = u_m U, \quad V_x = w_m \omega U_\xi / \psi, \\
+p &= p_0 + w_m \rho \omega (\delta_0 \psi^2)^{-1} P, \quad p^+ = w_m \rho \omega (\delta_0 \psi^2)^{-1} P^+.
+\end{aligned}
+\]
+
+Здесь $p$ --- давление; $\rho$, $\nu$ --- плотность и кинематический коэффициент вязкости жидкости; $V_x$, $V_z$ --- проекции скорости движения жидкости на оси координат, $w_m$ --- амплитуда прогиба пластины; $W$ --- безразмерный прогиб пластины; $u_m$ --- амплитуда продольного перемещения пластины; $U$ --- безразмерное продольное перемещение пластины; $\psi$, $\lambda$, $\Re$ --- параметры, характеризующие задачу.
+
+\end{document}
