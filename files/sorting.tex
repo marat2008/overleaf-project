@@ -1,0 +1,96 @@
+% sections/sorting.tex
+\chapter{Алгоритм сортировки слиянием}
+
+\section{Теоретическая часть}
+
+Сортировка слиянием (\textit{Merge Sort}) — рекурсивный алгоритм сортировки,
+предложенный Джоном фон Нейманом в~1945 году~\cite{knuth1997}. Алгоритм
+разбивает массив на два подмассива, рекурсивно сортирует их, а затем
+сливает в один отсортированный массив.
+
+\subsection{Вычислительная сложность}
+
+Пусть \(T(n)\)~--- время работы алгоритма на массиве длины~\(n\).
+Рекуррентное соотношение имеет вид:
+
+\begin{equation}
+  \label{eq:merge-recurrence}
+  T(n) = 2\,T\!\left(\frac{n}{2}\right) + \Theta(n),
+  \quad T(1) = \Theta(1).
+\end{equation}
+
+По основной теореме о рекуррентных соотношениях (теорема Мастера)
+решением~\eqref{eq:merge-recurrence} является:
+
+\begin{equation}
+  \label{eq:merge-complexity}
+  T(n) = \Theta(n \log n).
+\end{equation}
+
+Таким образом, сортировка слиянием работает за~\(\Theta(n \log n)\) во всех
+случаях, что является асимптотически оптимальным для алгоритмов, основанных
+на сравнении~\cite{cormen2022}.
+
+Количество сравнений при слиянии двух подмассивов длин \(p\) и~\(q\)
+не превышает:
+
+\begin{equation}
+  \label{eq:merge-comparisons}
+  C(p, q) \leq p + q - 1.
+\end{equation}
+
+\subsection{Сравнение алгоритмов сортировки}
+
+В таблице~\ref{tab:sort-comparison} приведено сравнение временной и
+пространственной сложности нескольких алгоритмов сортировки~\cite{sedgewick2011}.
+
+\begin{table}[H]
+  \centering
+  \caption{Сравнение алгоритмов сортировки}
+  \label{tab:sort-comparison}
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Алгоритм}
+      & \textbf{Лучший случай}
+      & \textbf{Средний случай}
+      & \textbf{Худший случай}
+      & \textbf{Память} \\
+    \midrule
+    Пузырьковая     & $\Omega(n)$       & $\Theta(n^2)$       & $O(n^2)$       & $O(1)$ \\
+    Быстрая         & $\Omega(n\log n)$ & $\Theta(n\log n)$   & $O(n^2)$       & $O(\log n)$ \\
+    \textbf{Слиянием} & $\Omega(n\log n)$ & $\Theta(n\log n)$ & $O(n\log n)$   & $O(n)$ \\
+    Пирамидальная   & $\Omega(n\log n)$ & $\Theta(n\log n)$   & $O(n\log n)$   & $O(1)$ \\
+    Вставками       & $\Omega(n)$       & $\Theta(n^2)$       & $O(n^2)$       & $O(1)$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Структура рекурсии}
+
+На рисунке~\ref{fig:merge-tree} изображено дерево рекурсивных вызовов
+сортировки слиянием для массива из семи элементов.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{images/merge_sort_tree.png}
+  \caption{Дерево рекурсии алгоритма сортировки слиянием}
+  \label{fig:merge-tree}
+\end{figure}
+
+\section{Реализация на Python}
+
+Ниже представлена реализация сортировки слиянием на языке Python~\cite{python_docs}.
+Функция \mintinline{python}{merge_sort} принимает список \mintinline{python}{arr}
+и возвращает новый отсортированный список. Вспомогательная функция
+\mintinline{python}{merge} сливает два упорядоченных списка
+(\mintinline{python}{left} и \mintinline{python}{right}) в один.
+
+\inputminted[
+  label=\fbox{merge\_sort.py},
+  firstline=1,
+  lastline=50
+]{python}{code/merge_sort.py}
+
+\noindent
+Листинг~\ref{code:merge-sort} расположен в приложении~\ref{app:merge-sort-full}
+(полный исходный файл).

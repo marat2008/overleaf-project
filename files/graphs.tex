@@ -1,0 +1,58 @@
+% sections/graphs.tex
+\chapter{Алгоритм Дейкстры}
+
+\section{Теоретическая часть}
+
+Алгоритм Дейкстры~\cite{dijkstra1959} решает задачу нахождения кратчайших
+путей из одной вершины-источника до всех остальных вершин во взвешенном
+ориентированном графе с неотрицательными весами рёбер.
+
+Пусть дан граф $G = (V, E, w)$, где $V$~--- множество вершин, $E$~--- множество
+рёбер, $w \colon E \to \mathbb{R}_{\geq 0}$~--- весовая функция.
+Требуется найти для каждой вершины $v \in V$ расстояние:
+
+\begin{equation}
+  \label{eq:dijkstra-dist}
+  d(s, v) = \min_{\pi: s \leadsto v} \sum_{(u,u') \in \pi} w(u, u'),
+\end{equation}
+
+где минимум берётся по всем путям $\pi$ из источника $s$ в вершину $v$.
+
+\subsection{Оценка сложности}
+
+При использовании двоичной кучи (\textit{binary heap}) в качестве
+приоритетной очереди сложность алгоритма составляет:
+
+\begin{equation}
+  \label{eq:dijkstra-complexity}
+  T(|V|, |E|) = O\!\left((|E| + |V|)\log |V|\right).
+\end{equation}
+
+\subsection{Пример работы алгоритма}
+
+На рисунке~\ref{fig:dijkstra-graph} изображён граф, для которого
+алгоритм находит кратчайшие расстояния от вершины~\texttt{0}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{images/dijkstra_graph.png}
+  \caption{Взвешенный граф и кратчайшие расстояния от вершины~\texttt{0}}
+  \label{fig:dijkstra-graph}
+\end{figure}
+
+\section{Реализация на C++}
+
+В листинге ниже приведена реализация алгоритма Дейкстры на языке~C++
+с использованием приоритетной очереди из стандартной библиотеки~\cite{cormen2022}.
+Граф хранится в виде списка смежности: \mintinline{cpp}{graph[u]} содержит
+пары \mintinline{cpp}{(v, w)}, где \verb|v|~--- смежная вершина,
+\verb|w|~--- вес ребра.
+
+Ключевая переменная \mintinline{cpp}{dist} хранит текущие минимальные
+расстояния; изначально все значения равны \mintinline{cpp}{INF}
+(\verb|numeric_limits<int>::max()|), кроме расстояния до источника,
+которое равно~\texttt{0}.
+
+\inputminted[
+  label=\fbox{dijkstra.cpp}
+]{cpp}{code/dijkstra.cpp}

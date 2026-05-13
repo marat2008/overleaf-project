@@ -1,0 +1,69 @@
+% main.tex — Главный файл проекта
+\documentclass{SCWorks}
+
+% Подключение библиографии
+\addbibresource{references.bib}
+
+% Глобальные настройки minted для Python
+\setminted[python]{
+  style=friendly,
+  linenos=true,
+  numbersep=5pt,
+  frame=single,
+  framesep=2mm,
+  fontsize=\small,
+  breaklines=true,
+  tabsize=4,
+  encoding=utf8
+}
+
+% Глобальные настройки minted для C++
+\setminted[cpp]{
+  style=friendly,
+  linenos=true,
+  numbersep=5pt,
+  frame=single,
+  framesep=2mm,
+  fontsize=\small,
+  breaklines=true,
+  tabsize=4
+}
+
+% ===== Данные титульного листа =====
+\university{Федеральное государственное образовательное учреждение\\
+высшего образования\\
+«Саратовский национальный исследовательский государственный университет\\
+имени Н.\,Г.\,Чернышевского»}
+\faculty{Институт математики и информатики}
+\department{Кафедра теоретических основ информатики}
+\worktype{Курсовая работа}
+\discipline{Алгоритмы и структуры данных}
+\worktitle{Алгоритмы сортировки и поиска кратчайшего пути на графах}
+\student{Иванов Иван Иванович}
+\group{101}
+\supervisor{доц. Петров П.\,П.}
+\workyear{Саратов, 2024}
+
+\begin{document}
+
+\maketitlepage
+
+% Оглавление
+\tableofcontents
+\newpage
+
+% Разделы
+\input{sections/introduction}
+\input{sections/sorting}
+\input{sections/graphs}
+\input{sections/conclusion}
+
+% Список источников
+\printbibliography[title={Список использованных источников}]
+\addcontentsline{toc}{chapter}{Список использованных источников}
+
+% Приложения
+\appendix
+\input{sections/appendix}
+
+\end{document}
