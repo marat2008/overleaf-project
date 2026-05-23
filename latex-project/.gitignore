@@ -1,0 +1,22 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.pyg
+_minted-*/
+
+# Compiled output (only root-level PDF, not img/)
+main.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
