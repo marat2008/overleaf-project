@@ -1,0 +1,79 @@
+\documentclass[coursework]{SCWorks}
+
+\usepackage{preamble}
+
+% Настройки minted для C++
+\setminted[cpp]{
+    linenos=true,
+    frame=single,
+    framesep=2mm,
+    baselinestretch=1.0,
+    fontsize=\small,
+    breaklines=true,
+    tabsize=4
+}
+
+% Настройки minted для Python
+\setminted[python]{
+    linenos=true,
+    frame=single,
+    framesep=2mm,
+    baselinestretch=1.0,
+    fontsize=\small,
+    breaklines=true,
+    tabsize=4
+}
+
+\begin{document}
+
+% Кафедра (в родительном падеже)
+\chair{математической кибернетики и компьютерных наук}
+
+% Тема работы
+\title{Сравнительный анализ алгоритмов сортировки}
+
+% Курс
+\course{1}
+
+% Группа
+\group{151}
+
+% Специальность/направление
+\napravlenie{09.03.04 "--- Программная инженерия}
+
+% Фамилия, имя, отчество в родительном падеже
+\author{Агакеримова Марата Халида Оглы}
+
+% Заведующий кафедрой
+\chtitle{доцент, к.\,ф.-м.\,н.}
+\chname{С.\,В.\,Миронов}
+
+% Научный руководитель
+\satitle{доцент, к.\,ф.-м.\,н.}
+\saname{Г.\,Г.\,Наркайтис}
+
+% Год выполнения
+\date{2026}
+
+\maketitle
+
+\secNumbering
+
+\tableofcontents
+
+\intro
+\input{src/intro}
+
+\input{src/theory}
+
+\input{src/implementation}
+
+\conclusion
+\input{src/conclusion}
+
+\bibliographystyle{ugost2003}
+\bibliography{thesis}
+
+\appendix
+
+\end{document}
